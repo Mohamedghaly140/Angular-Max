@@ -1,4 +1,4 @@
-@if (annualData.length === 0) {
+@if (annualData().length === 0) {
 <p>Please enter some values and press the "Calculate" button</p>
 } @else {
 <table>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (item of annualData; track item.year+$index) {
+    @for (item of annualData(); track item.year+$index) {
     <tr>
       <td>{{ item.year }}</td>
       <td>{{ item.valueEndOfYear | currency : "EGP" }}</td>
