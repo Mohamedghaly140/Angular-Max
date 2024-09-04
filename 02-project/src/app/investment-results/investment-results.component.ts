@@ -1,7 +1,6 @@
+import { InvestmentService } from './../investment-service.service';
 import { CurrencyPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
-
-import type { AnnualData } from '../annual-data.model';
+import { Component, computed, inject } from '@angular/core';
 
 @Component({
   selector: 'app-investment-results',
@@ -12,5 +11,9 @@ import type { AnnualData } from '../annual-data.model';
 })
 export class InvestmentResultsComponent {
   // @Input({ required: true }) annualData: AnnualData[] = [];
-  annualData = input.required<AnnualData[]>();
+  // annualData = input.required<AnnualData[]>();
+
+  private investmentService = inject(InvestmentService);
+
+  annualData = computed(() => this.investmentService.resultData());
 }
